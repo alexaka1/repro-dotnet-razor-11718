@@ -9,12 +9,54 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<div>
+    <InputRadioGroup @bind-Value="value1">
+        <InputRadio Value="@false"/>
+        <InputRadio Value="@true"/>
+    </InputRadioGroup>
+</div>
+
+<div>
+    <InputSelect @bind-Value="value2">
+        @foreach (var strings in (IEnumerable<string>) ["", "some", "value"])
+        {
+            <option value="@strings">@strings</option>
+        }
+    </InputSelect>
+</div>
+
+<div data-label="Happens with Model too">
+    <InputRadioGroup @bind-Value="Model.SomeBool">
+        <InputRadio Value="@false"/>
+        <InputRadio Value="@true"/>
+    </InputRadioGroup>
+</div>
+
+<div>
+    <InputSelect @bind-Value="Model.SomeString">
+        @foreach (var strings in (IEnumerable<string>) ["", "some", "value"])
+        {
+            <option value="@strings">@strings</option>
+        }
+    </InputSelect>
+</div>
+
 @code {
     private int currentCount = 0;
+    private bool value1 = true;
+    private string value2 = "";
+
+    private Foo Model = new();
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    class Foo
+    {
+        public bool SomeBool { get; set; }
+        public string SomeString { get; set; } = "";
     }
 
 }
