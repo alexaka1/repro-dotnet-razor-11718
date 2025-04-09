@@ -8,5 +8,5 @@ You need
 
 1. Look at `BlazorWasmAot/BlazorWasmAot.Client/Pages/Counter.razor`. Should be standard Blazor
 2. Look at `BlazorWasmAot/BlazorWasmAot.Client/BlazorWasmAot.Client.csproj:10` and below. AOT is enabled.
-3. dotnet build -c Release
+3. `dotnet build -c Release`
 4. Observe 8 warnings of `IL2091` in the console
